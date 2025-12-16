@@ -1,0 +1,25 @@
+{
+  "name": "rj-fitness-nodebk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeelnarola/RJ-Fitness-NodeBK.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jeelnarola/RJ-Fitness-NodeBK/issues"
+  },
+  "homepage": "https://github.com/jeelnarola/RJ-Fitness-NodeBK#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.0.1"
+  }
+}
