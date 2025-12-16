@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/jeelnarola/RJ-Fitness-NodeBK#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cloudinary": "^2.8.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",

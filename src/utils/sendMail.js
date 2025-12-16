@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 export const sendMailLink = async (email, link) => {
     try {
         const mailOptions = {
-            from: 'narolajeel29@gmail.com',
+            from: process.env.SEND_MAIL_USER,
             to: email,
             subject: "Your RJ GYM & Fitness Add Member",
             html: `
@@ -80,6 +80,77 @@ export const sendMailLink = async (email, link) => {
     } catch (error) {
         console.error("⚠️ Error during Send Mail:", error);
     }
+};
+
+export const sendMailOTP = async (email, otp) => {
+  try {
+    const mailOptions = {
+      from: SEND_MAIL_USER,
+      to: email,
+      subject: "Your RJ GYM & Fitness Password Reset OTP",
+      html: `
+        <div style="
+          font-family: Arial, sans-serif;
+          color: #333;
+          padding: 20px;
+          max-width: 600px;
+          margin: auto;
+          border: 1px solid #e0e0e0;
+          border-radius: 10px;
+          background: #f7f9fc;
+        ">
+          <h2 style="color: #2e6da4; text-align: center;">🔒 Password Reset OTP</h2>
+
+          <p>Dear User,</p>
+
+          <p>
+            We received a request to reset your password. Please use the OTP below to proceed:
+          </p>
+
+          <div style="text-align: center; margin: 20px 0;">
+            <span style="
+              display: inline-block;
+              padding: 15px 25px;
+              background-color: #2e6da4;
+              color: white;
+              font-size: 24px;
+              font-weight: bold;
+              border-radius: 5px;
+              box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+              letter-spacing: 5px;
+            ">
+              ${otp}
+            </span>
+          </div>
+
+          <p style="color: red; font-weight: bold;">⚠️ Important Reminder:</p>
+          <ul>
+            <li>This OTP is valid for the next <strong>10 minutes</strong>.</li>
+            <li>Do <strong>not share</strong> this OTP with anyone.</li>
+            <li>If you did not request this, please ignore this email.</li>
+          </ul>
+
+          <p style="font-size: 14px; color: #666; text-align: center; margin-top: 20px;">
+            Regards,<br />
+            <strong>RJ GYM Management Team</strong>
+          </p>
+        </div>
+      `,
+    };
+
+    // const info = await transporter.sendMail(mailOptions);
+    transporter.sendMail(mailOptions, (err, info) => {
+            if (err) {
+                console.error("❌ Error sending email:", err);
+            } else {
+                console.log("📧 Email successfully sent:", info.response);
+            }
+        });
+
+  } catch (error) {
+    console.error("❌ Error sending OTP email:", error);
+    throw error;
+  }
 };
 
 
