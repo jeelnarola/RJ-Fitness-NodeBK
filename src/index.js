@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv"
+import router from "./routes/index.js";
 // import nodem from './utils/sendMail.js'
 dotenv.config()
 
@@ -18,6 +19,7 @@ app.use(
 app.get("/",(req,res)=>{
     res.status(200).json({message:"Project Start For RJ-Fitness-NodeBK"})
 })
+app.use("/v1",router);
 
 
 // Parse incoming requests
