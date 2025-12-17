@@ -67,73 +67,13 @@ const userSchema = new mongoose.Schema(
       phone: String,
     },
 
-    // TRAINER FIELDS
-    specialization: {
-      type: [String],
-     
-    },
-    experience: {
-      type: Number,
-      min: 0,
-      
-    },
-    
-
     profileImage: String,
-    bio: {
-      type: String,
-      maxlength: [500, "Bio must be less than 500 characters"],
+    weight:{
+      type: Number,
     },
-
-    certifications: [
-      {
-        name: String,
-        issuedBy: String,
-        year: Number,
-      },
-    ],
-
-    // MEMBER FIELDS
-    membershipType: {
-      type: String,
-      enum: ["general", "personal"],
-      default: "general",
-     
+    height:{
+      type: Number,
     },
-
-    duration: {
-      type: Number, // months
-      min: 1,
-      max: 36,
-      
-    },
-
-    startDate: {
-      type: Date,
-      
-    },
-
-    expiryDate: {
-      type: Date,
-      
-    },
-
-    renewalDate: Date,
-
-    // COMMON
-    joinedAt: {
-      type: Date,
-      default: Date.now,
-      immutable: true,
-    },
-
-    payments: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Payment",
-      },
-    ],
-
     isActive: {
       type: Boolean,
       default: true,
