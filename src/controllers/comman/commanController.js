@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import { sendMailLink } from "../../utils/sendMail.js";
+import { Role } from "../../models/roleModel.js";
 
 export const sendLink = async (req, res) => {
   try {
@@ -88,6 +89,7 @@ export const profileUpdate = async (req, res) => {
 export const addRole = async(req,res)=>{
   try {
     let {roleName}=req.body;
+    console.log('=====req.body=====',req.body)
     if(!roleName){
       return res.status(400).json({success:false,message:"roleName are required"})
     }
