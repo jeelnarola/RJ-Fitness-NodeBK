@@ -28,6 +28,30 @@ RJ-Fitness-NodeBK/
 
 ---
 
+
+**Base URL**: `http://localhost:8090/v1`  
+
+🔐 All endpoints require: `Authorization: Bearer <token>` (unless noted)
+
+
+
+---
+
+## 🔑 Auth APIs
+
+**Base URL**: `/auth`
+
+| Method | Endpoint                         | Description |
+|------|----------------------------------|------------|
+| POST | `/login`                    | User login (returns access & refresh tokens) |
+| POST | `/logout`                   | User logout |
+| PATCH | `/change-password`           | change password using token/OTP |
+| POST | `/send-otp`         | Send OTP |
+| POST | `/verify-otp`        | Verify OTP |
+| PATCH | `/reset-password`      | reset password |
+
+---
+
 ## 🚀 Getting Started
 
 ### Install Dependencies

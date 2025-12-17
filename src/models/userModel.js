@@ -56,9 +56,9 @@ const userSchema = new mongoose.Schema(
 
     // ROLE MANAGEMENT
     role: {
-      type: String,
-      enum: ["member", "admin", "trainer"],
-      default: "member",
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Role",
+      required: true,
     },
 
     emergencyContact: {
@@ -70,16 +70,12 @@ const userSchema = new mongoose.Schema(
     // TRAINER FIELDS
     specialization: {
       type: [String],
-      required: function () {
-        return this.role === "trainer";
-      },
+     
     },
     experience: {
       type: Number,
       min: 0,
-      required: function () {
-        return this.role === "trainer";
-      },
+      
     },
     
 
@@ -102,35 +98,24 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["general", "personal"],
       default: "general",
-      required: function () {
-        return this.role === "member";
-      },
+     
     },
 
     duration: {
       type: Number, // months
       min: 1,
       max: 36,
-      required: function () {
-        return this.role === "member";
-      },
+      
     },
 
     startDate: {
       type: Date,
-      default: function () {
-        return this.role === "member" ? Date.now() : undefined;
-      },
+      
     },
 
     expiryDate: {
       type: Date,
-      default: function () {
-        if (this.role !== "member" || !this.duration) return undefined;
-        const date = new Date();
-        date.setMonth(date.getMonth() + this.duration);
-        return date;
-      },
+      
     },
 
     renewalDate: Date,
