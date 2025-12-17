@@ -21,7 +21,7 @@ const noticeSchema = new mongoose.Schema(
 
     targetAudience: {
       type: String,
-      enum: ["ALL", "ADMIN", "TRAINER", "MEMBER"],
+      enum: ["ALL", "Admin", "Trainer", "Member"],
       default: "ALL",
     },
 
